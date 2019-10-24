@@ -6,4 +6,6 @@
     <string name="java_button">Java Button</string>
     <string name="wybierz_kategorie">Wybierz Kategorie</string>
     <string name="kategoria">kategoria</string>
+    <string name="show_answer">Pokaż odpowiedź</string>
+    <string name="textViewQuestion">Miejsce na pytanie</string>
 </resources>
