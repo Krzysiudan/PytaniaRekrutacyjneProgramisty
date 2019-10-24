@@ -3,8 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="horizontal"
         android:padding="20dp"
-        android:layout_width="150dp"
-        android:layout_height="150dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -13,13 +13,16 @@
 
         <TextView
                 android:id="@+id/category_name"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:text="@string/kategoria"
-                android:layout_width="109dp"
-                android:layout_height="63dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="0dp"
                 android:textAlignment="center"
-                android:textStyle="bold"
+                android:textColor="#000000"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
         />
@@ -28,7 +31,9 @@
                   android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="20"
                   android:textSize="23sp"
-                  android:textStyle="bold"
+                  android:paddingTop="5dp"
+                  android:paddingBottom="20dp"
+                  android:textColor="#000000"
                   app:layout_constraintTop_toBottomOf="@+id/category_name" app:layout_constraintEnd_toEndOf="parent"
                   android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
                   app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"

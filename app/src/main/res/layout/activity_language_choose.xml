@@ -11,7 +11,8 @@ android:background="@drawable/backgroundsmaller">
     <TextView
 
             android:text="@string/wybierz_jezyk"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorPrimary"
+    android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_language_choose"
