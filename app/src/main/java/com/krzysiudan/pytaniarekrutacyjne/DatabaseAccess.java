@@ -1,5 +1,6 @@
 package com.krzysiudan.pytaniarekrutacyjne;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,7 +47,7 @@ public class DatabaseAccess {
     }
 
     public String getQuestion(String category) {
-        c = db.rawQuery("SELECT Question FROM Questions WHERE Category ='" + category +"' ORDER BY RANDOM() LIMIT 1", new String[]{});
+        c = db.rawQuery("SELECT Question FROM Questions WHERE (Category ='" + category +"') AND (Answered = '0') ORDER BY RANDOM() LIMIT 1", new String[]{});
         String record ="";
         while (c.moveToNext()) {
             record = c.getString(0);
@@ -64,5 +65,12 @@ public class DatabaseAccess {
         }
         Log.e("Database","Answer: "+ record);
         return record;
+    }
+
+    public void answerCorrect(String Question){
+        Log.e("Database","Question answered correctly : " +Question);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Answered",1);
+        db.update("Questions",contentValues,"Question = '"+Question+"'",null);
     }
 }
