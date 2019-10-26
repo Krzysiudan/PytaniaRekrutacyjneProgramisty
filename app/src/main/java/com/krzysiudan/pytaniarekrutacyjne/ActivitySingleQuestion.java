@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 public class ActivitySingleQuestion extends AppCompatActivity {
     private int isShown = 0;
@@ -16,6 +18,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_question);
+        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this.findViewById(android.R.id.content)).getChildAt(0);
 
         Intent intent = getIntent();
         final String category = intent.getStringExtra("Category");
@@ -35,10 +38,12 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         buttonAnswerCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textViewAnswerQuestion.scrollTo(0,0);
                 databaseAccess.answerCorrect(textViewAnswerQuestion.getText().toString());
                 String questionNew = databaseAccess.getQuestion(category);
                 textViewAnswerQuestion.setText(questionNew);
                 isShown=0;
+                showSnackbar("Rządzisz! Spróbuj się z następnym",viewGroup);
 
 
             }
@@ -47,9 +52,12 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         buttonAnswerWrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textViewAnswerQuestion.scrollTo(0,0);
                 String questionNew = databaseAccess.getQuestion(category);
                 textViewAnswerQuestion.setText(questionNew);
                 isShown=0;
+                showSnackbar("Następnym razem Ci się uda!",viewGroup);
+
 
             }
         });
@@ -68,5 +76,10 @@ public class ActivitySingleQuestion extends AppCompatActivity {
 
 
 
+    }
+
+    private void showSnackbar(String text, View parentView){
+        Snackbar.make(parentView, text, Snackbar.LENGTH_SHORT)
+                .show();
     }
 }
