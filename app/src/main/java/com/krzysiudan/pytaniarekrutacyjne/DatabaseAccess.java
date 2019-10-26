@@ -73,4 +73,15 @@ public class DatabaseAccess {
         contentValues.put("Answered",1);
         db.update("Questions",contentValues,"Question = '"+Question+"'",null);
     }
+
+    public int getNumberOfQuestionsInCategory(String category){
+        int numberOfQuestionsInCategory = 0;
+        c = db.rawQuery("SELECT COUNT(Id) Question FROM Questions  WHERE Category = '" + category+ "' ", new String[]{});
+        while (c.moveToNext()) {
+            numberOfQuestionsInCategory = c.getInt(0);
+        }
+        Log.e("Database","Number of Questions in "+category+" : " + numberOfQuestionsInCategory);
+
+        return numberOfQuestionsInCategory;
+    }
 }
