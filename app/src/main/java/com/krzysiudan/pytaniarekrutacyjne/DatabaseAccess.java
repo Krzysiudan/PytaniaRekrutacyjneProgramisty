@@ -84,4 +84,16 @@ public class DatabaseAccess {
 
         return numberOfQuestionsInCategory;
     }
+
+    public int getNumberOfQuestionsAnsweredCorrectlyInCategory(String category){
+        int numberOfQuestionsInCategory = 0;
+        c = db.rawQuery("SELECT COUNT(Id) Question FROM Questions  WHERE Category = '" + category+ "' AND Answered = '1'", new String[]{});
+        while (c.moveToNext()) {
+            numberOfQuestionsInCategory = c.getInt(0);
+        }
+        Log.e("Database","Number of Questions in "+category+" : " + numberOfQuestionsInCategory);
+
+        return numberOfQuestionsInCategory;
+    }
+
 }

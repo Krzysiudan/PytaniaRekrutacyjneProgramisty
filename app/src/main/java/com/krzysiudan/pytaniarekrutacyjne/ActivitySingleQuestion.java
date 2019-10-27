@@ -1,5 +1,6 @@
 package com.krzysiudan.pytaniarekrutacyjne;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -58,6 +60,10 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                 isShown=0;
                 showSnackbar("Rządzisz! Spróbuj się z następnym",viewGroup);
                 Log.d("Activity","Actual progress : "+ progressBar.getProgress());
+                Log.d("Activity","numberOfQuestionsInCategory : "+ numberOfQuestionsInCategory);
+                ifAllAnswersWereCorrect();
+
+
             }
         });
 
@@ -93,5 +99,20 @@ public class ActivitySingleQuestion extends AppCompatActivity {
     private void showSnackbar(String text, View parentView){
         Snackbar.make(parentView, text, Snackbar.LENGTH_SHORT)
                 .show();
+    }
+
+    private void ifAllAnswersWereCorrect(){
+        if(progressBar.getProgress()==numberOfQuestionsInCategory){
+            new AlertDialog.Builder(this)
+                    .setTitle("Gratulacje")
+                    .setMessage("Znasz już wszystkie odpowiedzi z tej kategorii!")
+                    .setPositiveButton((R.string.ok), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .show();
+        }
     }
 }

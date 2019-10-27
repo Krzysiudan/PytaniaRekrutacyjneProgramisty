@@ -15,10 +15,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<String> arrayListCategories;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    DatabaseAccess databaseAccess ;
+
 
     MyRecyclerViewAdapter(Context context, ArrayList<String> categories) {
         this.mInflater = LayoutInflater.from(context);
         this.arrayListCategories = categories;
+        databaseAccess =DatabaseAccess.getInstance(context);
     }
 
     @NonNull
@@ -31,7 +34,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.textViewCategoryName.setText(arrayListCategories.get(position));
-
+        databaseAccess.open();
+        String numbers = databaseAccess.getNumberOfQuestionsAnsweredCorrectlyInCategory(arrayListCategories.get(position))+"/"+databaseAccess.getNumberOfQuestionsInCategory(arrayListCategories.get(position));
+        holder.textViewAnswersCount.setText(numbers);
+        databaseAccess.close();
     }
 
     @Override
@@ -45,6 +51,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         ViewHolder(View itemView) {
             super(itemView);
+
             textViewCategoryName = itemView.findViewById(R.id.category_name);
             textViewAnswersCount = itemView.findViewById(R.id.answers_count);
             itemView.setOnClickListener(this);
