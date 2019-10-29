@@ -96,4 +96,11 @@ public class DatabaseAccess {
         return numberOfQuestionsInCategory;
     }
 
+    public void answersReset(String category){
+        Log.e("Database","Answers reset ");
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Answered",0);
+        db.update("Questions",contentValues,"Category = '"+category+"'",null);
+    }
+
 }

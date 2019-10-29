@@ -19,8 +19,10 @@ public class ActivitySingleQuestion extends AppCompatActivity {
 
 
     private int isShown = 0;
+    private int wereCongratulated = 0;
     private ProgressBar progressBar;
     private int numberOfQuestionsInCategory;
+
 
 
     @Override
@@ -41,7 +43,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         textViewAnswerQuestion.setMovementMethod(new ScrollingMovementMethod());
         textViewAnswerQuestion.setText(question);
 
-        Button buttonShowAnswer = (Button) findViewById(R.id.buttonShowAnswer);
+        final Button buttonShowAnswer = (Button) findViewById(R.id.buttonShowAnswer);
         ImageButton buttonAnswerCorrect = (ImageButton) findViewById(R.id.imageButtonCorrect);
         ImageButton buttonAnswerWrong = (ImageButton) findViewById(R.id.imageButtonWrong);
 
@@ -61,7 +63,11 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                 showSnackbar("Rządzisz! Spróbuj się z następnym",viewGroup);
                 Log.d("Activity","Actual progress : "+ progressBar.getProgress());
                 Log.d("Activity","numberOfQuestionsInCategory : "+ numberOfQuestionsInCategory);
-                ifAllAnswersWereCorrect();
+                if(progressBar.getProgress()==numberOfQuestionsInCategory && wereCongratulated == 0){
+                    alertAllAnswersCorrect();
+                    buttonShowAnswer.setText("Resetuj odpowiedzi");
+                    wereCongratulated=1;
+                }
 
 
             }
@@ -83,10 +89,17 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         buttonShowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isShown==0) {
+                if(isShown==0 && progressBar.getProgress()!=numberOfQuestionsInCategory) {
                     String answer = databaseAccess.getAnswer(textViewAnswerQuestion.getText().toString());
                     textViewAnswerQuestion.setText(answer);
                     isShown = 1;
+                }
+                if(progressBar.getProgress()==numberOfQuestionsInCategory){
+                    buttonShowAnswer.setText("Resetuj odpowiedzi");
+                    progressBar.setProgress(0);
+                    databaseAccess.answersReset(category);
+                    wereCongratulated = 0;
+
                 }
             }
         });
@@ -101,8 +114,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                 .show();
     }
 
-    private void ifAllAnswersWereCorrect(){
-        if(progressBar.getProgress()==numberOfQuestionsInCategory){
+    private void alertAllAnswersCorrect(){
             new AlertDialog.Builder(this)
                     .setTitle("Gratulacje")
                     .setMessage("Znasz już wszystkie odpowiedzi z tej kategorii!")
@@ -113,6 +125,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                         }
                     })
                     .show();
-        }
+
     }
+
 }
