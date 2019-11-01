@@ -25,10 +25,10 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c0f80c64-0192-4ea6-8365-bc0d1444ba1e">
-        <schema name="main" object-types="view, table" />
+        <schema name="main" object-types="table, view" />
       </connection>
       <connection connection-id="5cac6e13-acae-4327-8f28-9657e8b49c04">
-        <schema name="main" object-types="view, table" />
+        <schema name="main" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>

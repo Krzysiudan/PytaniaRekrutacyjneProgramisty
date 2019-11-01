@@ -33,7 +33,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.textViewCategoryName.setText(arrayListCategories.get(position));
+        holder.textViewCategoryName.setText(arrayListCategories.get(position).toLowerCase());
         databaseAccess.open();
         String numbers = databaseAccess.getNumberOfQuestionsAnsweredCorrectlyInCategory(arrayListCategories.get(position))+"/"+databaseAccess.getNumberOfQuestionsInCategory(arrayListCategories.get(position));
         holder.textViewAnswersCount.setText(numbers);

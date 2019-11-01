@@ -27,6 +27,7 @@ public class ActivityQuestionChoose extends AppCompatActivity implements MyRecyc
         recyclerViewAdapter = new MyRecyclerViewAdapter(getApplicationContext(),categories);
         recyclerViewAdapter.setClickListener(this);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recyclerViewAdapter);
 
         for(String a:categories){
