@@ -9,11 +9,21 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class DatabaseAccess {
+public class DatabaseAccess  {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase db;
     private static DatabaseAccess instance;
     Cursor c = null;
+
+    private final String TABLENAME = "Questions";
+    private final String COLUMN1 = "ID";
+    private final String COLUMN2 = "Language";
+    private final String COLUMN3 = "Seniority";
+    private final String COLUMN4 = "Category";
+    private final String COLUMN5 = "Question";
+    private final String COLUMN6 = "Answer";
+    private final String COLUMN7 = "Answered";
+
 
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);

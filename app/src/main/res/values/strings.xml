@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Pytania rekrutacyjne</string>
     <string name="title_activity_langueage_choose">ActivityLangueageChoose</string>
-    <string name="wybierz_jezyk">Wybierz język</string>
+    <string name="wybierz">Wybierz</string>
     <string name="JAVA">Java</string>
     <string name="java_button">Java Button</string>
     <string name="wybierz_kategorie">Wybierz Kategorie</string>

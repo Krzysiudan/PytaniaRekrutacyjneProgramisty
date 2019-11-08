@@ -38,6 +38,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         databaseAccess.open();
         final String question = databaseAccess.getQuestion(category);
         numberOfQuestionsInCategory = databaseAccess.getNumberOfQuestionsInCategory(category);
+        int numberOfQuestionAnsweredCorrectly = databaseAccess.getNumberOfQuestionsAnsweredCorrectlyInCategory(category);
 
         final TextView textViewAnswerQuestion = (TextView) findViewById(R.id.textViewQuestion);
         textViewAnswerQuestion.setMovementMethod(new ScrollingMovementMethod());
@@ -49,6 +50,10 @@ public class ActivitySingleQuestion extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(numberOfQuestionsInCategory);
+        progressBar.setProgress(numberOfQuestionAnsweredCorrectly);
+        if(numberOfQuestionAnsweredCorrectly==numberOfQuestionsInCategory){
+            buttonShowAnswer.setText("Resetuj");
+        }
 
 
         buttonAnswerCorrect.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +70,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                 Log.d("Activity","numberOfQuestionsInCategory : "+ numberOfQuestionsInCategory);
                 if(progressBar.getProgress()==numberOfQuestionsInCategory && wereCongratulated == 0){
                     alertAllAnswersCorrect();
-                    buttonShowAnswer.setText("Resetuj odpowiedzi");
+                    buttonShowAnswer.setText("Resetuj");
                     wereCongratulated=1;
                 }
 
@@ -95,7 +100,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
                     isShown = 1;
                 }
                 if(progressBar.getProgress()==numberOfQuestionsInCategory){
-                    buttonShowAnswer.setText("Resetuj odpowiedzi");
+                    buttonShowAnswer.setText("Pokaż odpowiedź");
                     progressBar.setProgress(0);
                     databaseAccess.answersReset(category);
                     wereCongratulated = 0;

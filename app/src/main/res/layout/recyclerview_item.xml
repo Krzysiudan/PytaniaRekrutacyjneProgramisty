@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="horizontal"
         android:padding="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,18 +25,18 @@
                 android:textColor="#000000"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-        />
+                app:fontFamily="@font/chunk_five_regular"/>
         <TextView
-                  android:id="@+id/answers_count"
-                  android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="20"
-                  android:textSize="12sp"
-                  android:paddingTop="5dp"
-                  android:paddingBottom="20dp"
-                  android:textColor="#000000"
-                  app:layout_constraintTop_toBottomOf="@+id/category_name" app:layout_constraintEnd_toEndOf="parent"
-                  android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-                  app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                  android:layout_marginStart="8dp"/>
+                android:id="@+id/answers_count"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="20"
+                android:textSize="12sp"
+                android:paddingTop="5dp"
+                android:paddingBottom="20dp"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@+id/category_name" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp" app:fontFamily="@font/chunk_five_regular"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
