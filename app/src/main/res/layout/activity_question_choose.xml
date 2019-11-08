@@ -9,6 +9,29 @@
         android:background="@drawable/backgroundsmaller"
 >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView_language_choose"
+            android:layout_marginTop="42dp"
+            android:paddingTop="30dp"
+            android:layout_marginBottom="42dp"
+            android:paddingBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvNumbers"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:layout_alignParentBottom="true"
+                                                   android:layout_alignParentStart="true"
+                                                   android:layout_alignParentLeft="true"
+                                                   android:layout_alignParentEnd="true"
+                                                   android:layout_alignParentRight="true"
+                                                   tools:layout_editor_absoluteY="8dp"
+                                                   tools:layout_editor_absoluteX="8dp"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
 
             android:text="@string/wybierz_kategorie"
@@ -24,27 +47,6 @@
             android:layout_margin="30dp"
             android:textAllCaps="true" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/chunk_five_print"/>
-
-
-    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvNumbers"
-                                               android:layout_width="wrap_content"
-                                               android:layout_height="wrap_content"
-                                               android:layout_alignParentBottom="true"
-                                               android:layout_alignParentStart="true"
-                                               android:layout_alignParentLeft="true"
-                                               android:layout_alignParentEnd="true"
-                                               android:layout_alignParentRight="true"
-                                               android:layout_marginTop="8dp"
-                                               app:layout_constraintTop_toBottomOf="@+id/textView_language_choose"
-                                               android:layout_marginEnd="8dp"
-                                               app:layout_constraintEnd_toEndOf="parent"
-                                               android:layout_marginRight="8dp"
-                                               app:layout_constraintStart_toStartOf="parent"
-                                               android:layout_marginLeft="8dp"
-                                               android:layout_marginStart="8dp"
-    />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

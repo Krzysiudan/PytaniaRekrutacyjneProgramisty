@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ActivitySingleQuestion extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class ActivitySingleQuestion extends AppCompatActivity {
     private int wereCongratulated = 0;
     private ProgressBar progressBar;
     private int numberOfQuestionsInCategory;
+    private AdView mAdView;
 
 
 
@@ -47,6 +50,10 @@ public class ActivitySingleQuestion extends AppCompatActivity {
         final Button buttonShowAnswer = (Button) findViewById(R.id.buttonShowAnswer);
         ImageButton buttonAnswerCorrect = (ImageButton) findViewById(R.id.imageButtonCorrect);
         ImageButton buttonAnswerWrong = (ImageButton) findViewById(R.id.imageButtonWrong);
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(numberOfQuestionsInCategory);

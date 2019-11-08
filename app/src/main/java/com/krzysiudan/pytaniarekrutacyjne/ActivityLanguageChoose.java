@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class ActivityLanguageChoose extends AppCompatActivity {
     UnusedDatabaseHelper myDb;
@@ -21,6 +24,13 @@ public class ActivityLanguageChoose extends AppCompatActivity {
                 Intent intent = new Intent(ActivityLanguageChoose.this,ActivityQuestionChoose.class);
                 intent.putExtra("LANG","JAVA");
                 startActivity(intent);
+            }
+        });
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
             }
         });
 

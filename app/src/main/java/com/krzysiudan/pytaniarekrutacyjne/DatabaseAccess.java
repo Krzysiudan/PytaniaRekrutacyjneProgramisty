@@ -57,7 +57,8 @@ public class DatabaseAccess  {
     }
 
     public String getQuestion(String category) {
-        c = db.rawQuery("SELECT Question FROM Questions WHERE (Category ='" + category +"') AND (Answered = '0') ORDER BY RANDOM() LIMIT 1", new String[]{});
+        c = db.query(TABLENAME, new String[]{"Question"},"Category=? AND Answered = ?",new String[]{category,"0"},null,null, "RANDOM() LIMIT 1");
+        //c = db.rawQuery("SELECT Question FROM Questions WHERE (Category ='" + category +"') AND (Answered = '0') ORDER BY RANDOM() LIMIT 1", new String[]{});
         String record ="";
         while (c.moveToNext()) {
             record = c.getString(0);
