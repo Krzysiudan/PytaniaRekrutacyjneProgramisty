@@ -10,14 +10,13 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class ActivityLanguageChoose extends AppCompatActivity {
-    UnusedDatabaseHelper myDb;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_choose);
-        ImageButton imageButton = (ImageButton) findViewById(R.id.imageButtonJava);
+        ImageButton imageButton =  findViewById(R.id.imageButtonJava);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
