@@ -114,4 +114,33 @@ public class DatabaseAccess  {
         db.update("Questions",contentValues,"Category = '"+category+"'",null);
     }
 
+    public int getIdNumber(String answerOrQuestion){
+        c = db.rawQuery("SELECT ID FROM Questions  WHERE Answer='" + answerOrQuestion+ "' OR Question ='"+answerOrQuestion+"'", new String[]{});
+        int id=0;
+        while (c.moveToNext()) {
+            id = c.getInt(0);
+        }
+        Log.e("Database","getIdNumber - ID: "+id);
+        return id;
+    }
+
+    public int checkHowManyImages(int id){
+        c = db.rawQuery("SELECT ID FROM IMAGES WHERE Question_ID='"+id+"'",new String[]{});
+        int i =0;
+        while(c.moveToNext()){
+            i++;
+        }
+        Log.d("Database", "Images for id: " + id + " - " + i);
+        return i;
+    }
+
+    public byte[] getImageInByteArray(int idFromQuestions){
+        c = db.rawQuery("SELECT IMAGE FROM IMAGES WHERE Question_ID='"+idFromQuestions+"'",new String[]{});
+        byte[] image =null;
+        if(c!=null && c.moveToFirst()){
+            image =c.getBlob(0);
+        }
+        return image;
+    }
+
 }

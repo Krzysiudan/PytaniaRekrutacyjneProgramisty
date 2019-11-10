@@ -105,6 +105,7 @@
             android:background="@color/colorAccent"
             android:tint="@color/colorPrimary"
             ads:layout_constraintStart_toStartOf="@+id/imageButtonCorrect"
-            android:layout_marginBottom="1dp"/>
+            android:layout_marginBottom="1dp"
+    android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
